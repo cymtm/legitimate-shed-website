@@ -52,7 +52,7 @@ export default function AppsPage() {
             </div>
             <h2 className="mt-6 text-2xl font-semibold font-headline">No Apps Yet</h2>
             <p className="mt-2 max-w-md text-muted-foreground">
-                It looks like you haven't added any apps. To add an app, open the <code className="font-mono bg-muted text-foreground p-1 rounded-sm">src/lib/data.ts</code> file and add a new app object to the `apps` array.
+                It looks like you haven&apos;t added any apps. To add an app, open the <code className="font-mono bg-muted text-foreground p-1 rounded-sm">src/lib/data.ts</code> file and add a new app object to the `apps` array.
             </p>
         </div>
       )}
