@@ -9,7 +9,7 @@ export default function AboutPage() {
       <div className="text-center">
         <h1 className="text-4xl font-bold tracking-tight font-headline">The Shed</h1>
         <p className="mt-2 text-lg text-muted-foreground">
-          It's not a statement. It's just our address.
+          It&apos;s not a statement. It&apos;s just our address.
         </p>
       </div>
 
@@ -29,7 +29,7 @@ export default function AboutPage() {
             <div className="p-8 md:w-1/2 flex flex-col justify-center">
                 <h2 className="text-2xl font-bold font-headline">Where We Work</h2>
                 <p className="mt-4 text-muted-foreground">
-                The tech industry is built on narratives. This is ours. There's no venture capital, no ping-pong table, just a shed. This is where we build. Our setup is a testament to what you can get done with borrowed electricity and a spotty Wi-Fi signal. We're developers, and this is our office. It's not glamorous, but it's what we got.
+                The tech industry is built on narratives. This is ours. There&apos;s no venture capital, no ping-pong table, just a shed. This is where we build. Our setup is a testament to what you can get done with borrowed electricity and a spotty Wi-Fi signal. We&apos;re developers, and this is our office. It&apos;s not glamorous, but it&apos;s what we got.
                 </p>
             </div>
           </div>
@@ -45,7 +45,7 @@ export default function AboutPage() {
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground">
-                Our development machines have less memory than a modern smart watch. We write clean, efficient code not as a best practice, but out of necessity. There's no room for bloat.
+                Our development machines have less memory than a modern smart watch. We write clean, efficient code not as a best practice, but out of necessity. There&apos;s no room for bloat.
               </p>
             </CardContent>
           </Card>
