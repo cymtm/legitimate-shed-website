@@ -10,24 +10,10 @@
 !.yarn/releases
 !.yarn/versions
 .modified
-apphosting.yaml
-functions
-firebase-debug.log
-# testing
-/coverage
-/functions
-/functions/node_modules
-/functions/venv
-/docs
-/dataconnect-generated
-/dataconnect-generated
-/dataconnect
-/.idx
 .eslintcache
 
-
-i
-/functions/package-lock.json
+# testing
+/coverage
 
 # next.js
 /.next/
@@ -55,7 +41,3 @@ next-env.d.ts
 
 .genkit/*
 .env*
-
-# firebase
-firebase-debug.log
-firestore-debug.log
