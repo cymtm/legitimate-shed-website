@@ -24,7 +24,9 @@ firebase-debug.log
 /dataconnect
 /.idx
 package-lock.json
-.
+.eslintcache
+
+
 
 /functions/package-lock.json
 
