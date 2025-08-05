@@ -52,7 +52,7 @@ export default function GamesPage() {
             </div>
             <h2 className="mt-6 text-2xl font-semibold font-headline">No Games Yet</h2>
             <p className="mt-2 max-w-md text-muted-foreground">
-                It looks like you haven't added any games. To add a game, open the <code className="font-mono bg-muted text-foreground p-1 rounded-sm">src/lib/data.ts</code> file and add a new game object to the `games` array.
+                It looks like you haven&apos;t added any games. To add a game, open the <code className="font-mono bg-muted text-foreground p-1 rounded-sm">src/lib/data.ts</code> file and add a new game object to the `games` array.
             </p>
         </div>
       )}

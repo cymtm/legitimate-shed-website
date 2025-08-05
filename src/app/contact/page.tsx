@@ -16,7 +16,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { submitContactForm } from "./actions";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Loader2 } from "lucide-react";
 import React from "react";
@@ -34,6 +33,29 @@ const formSchema = z.object({
     message: "Message must not be longer than 500 characters."
   }),
 });
+
+// Client-side form submission for static export compatibility
+async function submitContactForm(data: z.infer<typeof formSchema>) {
+  // Validate data client-side
+  const result = formSchema.safeParse(data);
+  
+  if (!result.success) {
+    return { success: false, error: result.error.format() };
+  }
+
+  // For static export, we&apos;ll just simulate submission
+  // In a real static site, you&apos;d integrate with a service like Netlify Forms,
+  // Formspree, or similar
+  console.log("Contact form submission (demo):");
+  console.log(`- Name: ${result.data.name}`);
+  console.log(`- Email: ${result.data.email}`);
+  console.log(`- Message: ${result.data.message}`);
+
+  // Simulate network delay
+  await new Promise(resolve => setTimeout(resolve, 1000));
+  
+  return { success: true };
+}
 
 export default function ContactPage() {
   const { toast } = useToast();
@@ -56,7 +78,7 @@ export default function ContactPage() {
     if (result.success) {
       toast({
         title: "Message Sent!",
-        description: "Thanks for reaching out. We'll get back to you soon.",
+        description: "Thanks for reaching out. We&apos;ll get back to you soon.",
       });
       form.reset();
     } else {
