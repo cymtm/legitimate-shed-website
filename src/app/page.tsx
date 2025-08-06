@@ -15,9 +15,12 @@ export default function Home() {
         </p>
         <div className="mt-10 flex flex-wrap justify-center gap-4">
           <Button asChild size="lg">
-            <Link href="/games">
-              Explore Our Games <ArrowRight className="ml-2 h-5 w-5" />
+            <Link href="/game">
+              Play Our Game <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
+          </Button>
+          <Button asChild size="lg" variant="secondary">
+            <Link href="/games">Browse All Games</Link>
           </Button>
           <Button asChild size="lg" variant="secondary">
             <Link href="/apps">Discover Our Apps</Link>
