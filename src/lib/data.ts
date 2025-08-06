@@ -5,28 +5,12 @@ import type { Game, App } from "./definitions";
 // The slug should be unique and will be used in the URL.
 export const games: Game[] = [
   {
-    slug: "click-target",
-    title: "Click Target Challenge",
-    description: "Test your reflexes and precision in this fast-paced clicking game. Can you hit the moving target?",
-    imageUrl: "/assets/game-click-target.png",
-    gameUrl: "/game",
-    imageHint: "A colorful game interface with a red circular target on a gradient background"
-  },
-  {
-    slug: "memory-match",
-    title: "Memory Match",
-    description: "Challenge your memory with this classic card matching game. Flip cards to find matching pairs.",
-    imageUrl: "/assets/game-memory.png",
-    gameUrl: "/games/memory-match",
-    imageHint: "A grid of face-down playing cards in a memory matching game layout"
-  },
-  {
-    slug: "word-puzzle",
-    title: "Word Puzzle Master",
-    description: "Solve word puzzles and test your vocabulary. Find hidden words in letter grids.",
-    imageUrl: "/assets/game-word-puzzle.png",
-    gameUrl: "/games/word-puzzle",
-    imageHint: "A letter grid with words highlighted in different colors"
+    slug: "warrenwalker",
+    title: "@cymtm/Warrenwalker",
+    description: "Experience the adventure with Warren Walker, an engaging interactive game experience.",
+    imageUrl: "/assets/game-warrenwalker.png",
+    gameUrl: "/games/warrenwalker",
+    imageHint: "An adventure-themed game interface featuring Warren Walker character in an engaging environment"
   }
 ];
 
