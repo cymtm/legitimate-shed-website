@@ -106,7 +106,7 @@ export default function GamePage({ params }: GamePageProps) {
                 onLoad={handleIframeLoad}
                 onError={handleIframeError}
                 title={game.title}
-                sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+                sandbox="allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
               />
             </div>
           )}
