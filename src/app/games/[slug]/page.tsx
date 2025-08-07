@@ -37,8 +37,6 @@ export default function GamePage({ params }: GamePageProps) {
     setError(true);
   };
 
-  const gameUrl = getGameUrl();
-
   return (
     <div className="container py-12">
       <div className="mb-6">
