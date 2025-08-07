@@ -9,7 +9,7 @@ export const games: Game[] = [
     title: "@cymtm/Warrenwalker",
     description: "Experience the adventure with Warren Walker, an engaging interactive game experience.",
     imageUrl: "/assets/game-warrenwalker.png",
-    gameUrl: "/games/warrenwalker",
+    gameUrl: "https://cymtm.github.io/warrenwalker/",
     imageHint: "An adventure-themed game interface featuring Warren Walker character in an engaging environment"
   }
 ];
