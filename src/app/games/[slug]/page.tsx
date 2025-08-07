@@ -25,13 +25,8 @@ export default function GamePage({ params }: GamePageProps) {
     notFound();
   }
 
-  // For warrenwalker, try to load from GitHub Pages
-  const getGameUrl = () => {
-    if (game.slug === 'warrenwalker') {
-      return 'https://cymtm.github.io/warrenwalker/';
-    }
-    return game.gameUrl;
-  };
+  // Use the gameUrl directly from the game data
+  const gameUrl = game.gameUrl;
 
   const handleIframeLoad = () => {
     setLoading(false);
