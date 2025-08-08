@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cross-Origin Isolation Test Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            max-width: 600px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        .status {
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        .success {
+            background-color: rgba(0, 255, 0, 0.2);
+            border: 2px solid #00ff00;
+        }
+        .error {
+            background-color: rgba(255, 0, 0, 0.2);
+            border: 2px solid #ff0000;
+        }
+        .feature-test {
+            margin: 10px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+        }
+        button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: scale(1.05);
+        }
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 Test Game - Cross-Origin Isolation Check</h1>
+        <p>This test verifies that the site supports modern web games with multithreading capabilities.</p>
+        
+        <div id="isolation-status" class="status">
+            Checking cross-origin isolation status...
+        </div>
+        
+        <div class="feature-test">
+            <h3>🎯 Pointer Lock Test</h3>
+            <button id="pointer-lock-btn">Test Pointer Lock</button>
+            <div id="pointer-lock-status">Click to test pointer lock API</div>
+        </div>
+        
+        <div class="feature-test">
+            <h3>📱 Fullscreen Test</h3>
+            <button id="fullscreen-btn">Test Fullscreen</button>
+            <div id="fullscreen-status">Click to test fullscreen API</div>
+        </div>
+        
+        <div class="feature-test">
+            <h3>🎮 Gamepad Test</h3>
+            <div id="gamepad-status">Connect a gamepad and it will be detected here</div>
+        </div>
+        
+        <div class="feature-test">
+            <h3>🧮 SharedArrayBuffer Test</h3>
+            <div id="sab-status">Checking SharedArrayBuffer availability...</div>
+        </div>
+    </div>
+
+    <script>
+        // Check cross-origin isolation
+        function checkCrossOriginIsolation() {
+            const statusDiv = document.getElementById('isolation-status');
+            const isIsolated = self.crossOriginIsolated;
+            
+            if (isIsolated) {
+                statusDiv.className = 'status success';
+                statusDiv.textContent = '✅ Cross-Origin Isolation: ENABLED (SharedArrayBuffer and multithreading supported)';
+            } else {
+                statusDiv.className = 'status error';
+                statusDiv.textContent = '❌ Cross-Origin Isolation: DISABLED (Some features may not work)';
+            }
+            
+            return isIsolated;
+        }
+
+        // Test SharedArrayBuffer
+        function testSharedArrayBuffer() {
+            const sabDiv = document.getElementById('sab-status');
+            try {
+                if (typeof SharedArrayBuffer !== 'undefined') {
+                    // Try to create a SharedArrayBuffer
+                    const sab = new SharedArrayBuffer(1024);
+                    sabDiv.textContent = '✅ SharedArrayBuffer: Available (Size: 1024 bytes created successfully)';
+                    sabDiv.style.color = '#00ff00';
+                } else {
+                    sabDiv.textContent = '❌ SharedArrayBuffer: Not Available';
+                    sabDiv.style.color = '#ff6666';
+                }
+            } catch (error) {
+                sabDiv.textContent = `❌ SharedArrayBuffer Error: ${error.message}`;
+                sabDiv.style.color = '#ff6666';
+            }
+        }
+
+        // Test Pointer Lock
+        document.getElementById('pointer-lock-btn').addEventListener('click', () => {
+            const statusDiv = document.getElementById('pointer-lock-status');
+            const btn = document.getElementById('pointer-lock-btn');
+            
+            if (document.pointerLockElement) {
+                document.exitPointerLock();
+                statusDiv.textContent = 'Pointer lock released';
+                btn.textContent = 'Test Pointer Lock';
+            } else {
+                document.documentElement.requestPointerLock().then(() => {
+                    statusDiv.textContent = '✅ Pointer lock acquired! Move your mouse.';
+                    statusDiv.style.color = '#00ff00';
+                    btn.textContent = 'Release Pointer Lock';
+                }).catch(err => {
+                    statusDiv.textContent = `❌ Pointer lock failed: ${err.message}`;
+                    statusDiv.style.color = '#ff6666';
+                });
+            }
+        });
+
+        // Test Fullscreen
+        document.getElementById('fullscreen-btn').addEventListener('click', () => {
+            const statusDiv = document.getElementById('fullscreen-status');
+            const btn = document.getElementById('fullscreen-btn');
+            
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+                statusDiv.textContent = 'Exited fullscreen';
+                btn.textContent = 'Test Fullscreen';
+            } else {
+                document.documentElement.requestFullscreen().then(() => {
+                    statusDiv.textContent = '✅ Fullscreen activated! Press ESC to exit.';
+                    statusDiv.style.color = '#00ff00';
+                    btn.textContent = 'Exit Fullscreen';
+                }).catch(err => {
+                    statusDiv.textContent = `❌ Fullscreen failed: ${err.message}`;
+                    statusDiv.style.color = '#ff6666';
+                });
+            }
+        });
+
+        // Test Gamepad
+        function updateGamepadStatus() {
+            const statusDiv = document.getElementById('gamepad-status');
+            const gamepads = navigator.getGamepads();
+            const connectedGamepads = Array.from(gamepads).filter(gp => gp !== null);
+            
+            if (connectedGamepads.length > 0) {
+                statusDiv.textContent = `✅ Found ${connectedGamepads.length} gamepad(s): ${connectedGamepads.map(gp => gp.id).join(', ')}`;
+                statusDiv.style.color = '#00ff00';
+            } else {
+                statusDiv.textContent = 'No gamepads detected. Connect a controller and press any button.';
+                statusDiv.style.color = '#cccccc';
+            }
+        }
+
+        // Listen for gamepad events
+        window.addEventListener('gamepadconnected', updateGamepadStatus);
+        window.addEventListener('gamepaddisconnected', updateGamepadStatus);
+        
+        // Poll for gamepad status
+        setInterval(updateGamepadStatus, 1000);
+
+        // Initialize tests
+        checkCrossOriginIsolation();
+        testSharedArrayBuffer();
+        updateGamepadStatus();
+
+        // Log environment info
+        console.log('🎮 Game Environment Info:');
+        console.log('Cross-Origin Isolated:', self.crossOriginIsolated);
+        console.log('SharedArrayBuffer Available:', typeof SharedArrayBuffer !== 'undefined');
+        console.log('Pointer Lock Supported:', 'requestPointerLock' in Element.prototype);
+        console.log('Fullscreen Supported:', 'requestFullscreen' in Element.prototype);
+        console.log('Gamepad API Supported:', 'getGamepads' in navigator);
+        console.log('User Agent:', navigator.userAgent);
+    </script>
+</body>
+</html>
