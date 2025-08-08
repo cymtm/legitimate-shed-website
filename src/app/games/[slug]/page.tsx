@@ -99,7 +99,9 @@ export default function GamePage({ params }: GamePageProps) {
                 onLoad={handleIframeLoad}
                 onError={handleIframeError}
                 title={game.title}
-                sandbox="allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
+                sandbox="allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin"
+                allowFullScreen
+                allow="fullscreen; gamepad; accelerometer; gyroscope; magnetometer; xr-spatial-tracking; microphone; camera"
               />
             </div>
           )}
@@ -107,7 +109,7 @@ export default function GamePage({ params }: GamePageProps) {
       </Card>
 
       <div className="text-center text-sm text-muted-foreground">
-        <p>Game hosted externally • Click &quot;Open in New Tab&quot; for best experience</p>
+        <p>Game hosted locally • Click &quot;Open in New Tab&quot; for best experience</p>
       </div>
     </div>
   );
