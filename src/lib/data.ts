@@ -11,6 +11,14 @@ export const games: Game[] = [
     imageUrl: "/assets/game-warrenwalker.png",
     gameUrl: "/games/warrenwalker/index.html",
     imageHint: "An adventure-themed game interface featuring Warren Walker character in an engaging environment"
+  },
+  {
+    slug: "test",
+    title: "Cross-Origin Isolation Test",
+    description: "A test game that verifies cross-origin isolation, SharedArrayBuffer support, and modern web game APIs like pointer lock and fullscreen.",
+    imageUrl: "/assets/game-warrenwalker.png", // Reusing existing image for now
+    gameUrl: "/games/test/index.html",
+    imageHint: "A technical test interface showing cross-origin isolation status and web API compatibility"
   }
 ];
 

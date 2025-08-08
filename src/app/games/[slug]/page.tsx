@@ -25,8 +25,24 @@ export default function GamePage({ params }: GamePageProps) {
     notFound();
   }
 
-  // Use the gameUrl directly from the game data
-  const gameUrl = game.gameUrl;
+  // Use the gameUrl directly from the game data with validation
+  const validateGameUrl = (url: string): string => {
+    try {
+      const urlObj = new URL(url);
+      // Only allow URLs from cymtm.github.io for security
+      if (urlObj.hostname === 'cymtm.github.io') {
+        return url;
+      }
+      // Fallback to external link if URL is not from expected domain
+      throw new Error('Invalid domain');
+    } catch {
+      // If URL is invalid or not from expected domain, return it as-is
+      // The iframe will fail to load and show the error state
+      return url;
+    }
+  };
+  
+  const gameUrl = validateGameUrl(game.gameUrl);
 
   const handleIframeLoad = () => {
     setLoading(false);
