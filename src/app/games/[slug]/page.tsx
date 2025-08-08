@@ -115,7 +115,10 @@ export default function GamePage({ params }: GamePageProps) {
                 onLoad={handleIframeLoad}
                 onError={handleIframeError}
                 title={game.title}
-                sandbox="allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
+                // Expanded sandbox and capabilities for web games
+                sandbox="allow-scripts allow-same-origin allow-forms allow-pointer-lock allow-modals allow-popups allow-popups-to-escape-sandbox allow-downloads"
+                allow="fullscreen; autoplay; gamepad; clipboard-read; clipboard-write; xr-spatial-tracking"
+                allowFullScreen
               />
             </div>
           )}
