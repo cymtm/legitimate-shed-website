@@ -99,7 +99,7 @@ export default function GamePage({ params }: GamePageProps) {
                 onLoad={handleIframeLoad}
                 onError={handleIframeError}
                 title={game.title}
-                sandbox="allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin"
+                sandbox="allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
                 allowFullScreen
                 allow="fullscreen; gamepad; accelerometer; gyroscope; magnetometer; xr-spatial-tracking; microphone; camera"
               />
